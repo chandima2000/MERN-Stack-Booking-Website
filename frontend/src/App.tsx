@@ -1,11 +1,31 @@
-import React from 'react';
-import './App.css'
+import {Route,  BrowserRouter , Routes } from 'react-router-dom';
+import Layout from './layouts/Layout';
 
 
 
 export default function App() {
   return (
-    <div>App</div>
-  )
-}
+     <BrowserRouter>
+        <Routes>
+          
+          <Route 
+              path = "/" 
+              element = {
+                    <Layout>
+                          <p>Home page</p>
+                    </Layout>} 
+          />
+
+          <Route 
+              path='/search' 
+              element ={
+                    <Layout>
+                          <p>Search page</p>
+                    </Layout>}
+          />
+      
+        </Routes>
+     </BrowserRouter>
+  );
+};
 
