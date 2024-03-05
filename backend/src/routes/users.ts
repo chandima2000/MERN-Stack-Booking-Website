@@ -35,8 +35,7 @@ router.post('/register',[
             const token = jwt.sign(  //JWT is created for the user using the jwt.sign() method. 
                 {userId : user.id},
                 process.env.JWT_SECRET_KEY as string,
-                {expiresIn : "1d",
-            }
+                {expiresIn : "1d"}
             );
 
 
@@ -44,7 +43,7 @@ router.post('/register',[
             res.cookie("auth_token",token ,{
                             httpOnly: true,
                             secure: process.env.NODE_ENV === "production",
-                            // maxAge:'86400000',  // 24 hours in milliseconds
+                           // maxAge:'86400000'  // 24 hours in milliseconds
             });
 
             return res.status(200).send({message:"User Registered Successfully"})
