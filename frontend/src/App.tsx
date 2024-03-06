@@ -1,5 +1,6 @@
 import {Route,  BrowserRouter , Routes } from 'react-router-dom';
 import Layout from './layouts/Layout';
+import Register from './pages/Register';
 
 
 
@@ -7,7 +8,7 @@ export default function App() {
   return (
      <BrowserRouter>
         <Routes>
-          
+
           <Route 
               path = "/" 
               element = {
@@ -23,7 +24,16 @@ export default function App() {
                           <p>Search page</p>
                     </Layout>}
           />
-      
+        <Route 
+              path = "/register" 
+              element ={
+                <Layout>
+                    <Register/>
+                </Layout>
+              }
+         />
+
+
         </Routes>
      </BrowserRouter>
   );
