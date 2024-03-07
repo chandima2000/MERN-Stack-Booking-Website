@@ -8,6 +8,7 @@ export const register = async (formData : RegisterFormData) => {
 
                 {
                     method : 'POST',
+                    credentials : "include", //This is used for  CORS, to include cookies in the request header .
                     headers : {
                         "Content-Type" : "application/json",
                     },
@@ -22,3 +23,14 @@ export const register = async (formData : RegisterFormData) => {
 
 };
 
+export const validateToken = async () => {
+    const response = await fetch(`${API_BASE_URL}/api/auth/validate-token`,{
+        credentials : 'include'
+    });
+
+    if(!response.ok){
+        throw new Error("Token Invalid")
+    };
+
+    return response.json();
+}
