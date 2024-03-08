@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form"
-import { useMutation } from "react-query";
+import { useMutation, useQueryClient } from "react-query";
 import * as apiClient from '../api-client';
 import { useAppContext } from "../contexts/AppContext";
 import { useNavigate } from "react-router-dom";
@@ -16,6 +16,7 @@ import { useNavigate } from "react-router-dom";
 
 export default function Register() {
 
+   const queryClient = useQueryClient();
    const navigate = useNavigate();
    const {showToast} = useAppContext();
 
@@ -23,8 +24,9 @@ export default function Register() {
 
    const mutation = useMutation(apiClient.register,{
     
-        onSuccess: () => {
-                showToast({message:"Registration Successful",type:"SUCCESS"})
+        onSuccess: async () => {
+                showToast({message:"Registration Successful",type:"SUCCESS"});
+                await queryClient.invalidateQueries("validateToken");
                 navigate("/sign-in");
         },
         onError: (error : Error) => {
