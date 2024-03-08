@@ -25,7 +25,7 @@ export default function Register() {
     
         onSuccess: () => {
                 showToast({message:"Registration Successful",type:"SUCCESS"})
-                navigate("/");
+                navigate("/sign-in");
         },
         onError: (error : Error) => {
                 showToast({message:error.message,type:"ERROR"})

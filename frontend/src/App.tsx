@@ -1,6 +1,7 @@
 import {Route,  BrowserRouter , Routes } from 'react-router-dom';
 import Layout from './layouts/Layout';
 import Register from './pages/Register';
+import SignIn from './pages/SignIn';
 
 
 
@@ -33,6 +34,14 @@ export default function App() {
               }
          />
 
+         <Route
+              path = "/sign-in"
+              element = {
+                  <Layout>
+                        <SignIn/>
+                  </Layout>
+              }
+         />
 
         </Routes>
      </BrowserRouter>

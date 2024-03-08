@@ -34,13 +34,18 @@ router.post('/login',[
                                 return res.status(401).json({message:"Invalid credentials"});
                             }
 
+                            //Create a token using JWT and sign method
                             const token = jwt.sign(
                                 {userId :user.id},
                                 process.env.JWT_SECRET_KEY as string,
                                 {expiresIn:'1d'}
                             );
+                            
+                            // Create a cookie using "cookie" method  and pass it to the client
+                            // side using "res" method & save it in the web browser.
+                            //It is called "auth_token"
 
-                            res.cookie("auth_token",token,{httpOnly:true,secure:process.env.NODE_ENV ===  "production",maxAge:86400000});
+                            res.cookie("auth_token",token,{httpOnly:true,secure:process.env.NODE_ENV === "production",maxAge:86400000});
 
                             res.status(200).json({userId:user.id})
 
@@ -60,5 +65,18 @@ router.get('/validate-token',verifyToken,(req:Request,res:Response) => {
 //The reason why res.userId is not used is because the res object does not have a userId property.
 //The userId property is set on the req object by the verifyToken middleware.
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 export default router;
