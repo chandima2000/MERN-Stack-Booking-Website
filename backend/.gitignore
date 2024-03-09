@@ -1,4 +1,4 @@
-.env
-.env.e2e
 node_modules
 dist
+.env
+.env.e2e
