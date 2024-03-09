@@ -19,6 +19,7 @@ const mongoose_1 = __importDefault(require("mongoose"));
 const users_1 = __importDefault(require("./routes/users"));
 const auth_1 = __importDefault(require("./routes/auth"));
 const cookie_parser_1 = __importDefault(require("cookie-parser"));
+const path_1 = __importDefault(require("path"));
 mongoose_1.default
     .connect(process.env.MONGODB_CONNECTION_STRING)
     .then(() => {
@@ -35,6 +36,7 @@ app.use((0, cors_1.default)({
     origin: process.env.FRONTEND_URL,
     credentials: true
 }));
+app.use(express_1.default.static(path_1.default.join(__dirname, "../../frontend/dist")));
 //Test the api end-point
 app.get("/api/test", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     res.json({ message: " This is from express Endpoint." });
