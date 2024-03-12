@@ -3,7 +3,8 @@ import Toast from "../components/Toast";
 import { useQuery } from "react-query";
 import * as apiClient from '../api-client';
 
-//This code sets up the basic structure for a context that can be used to display toast notifications in a React application. 
+//This code sets up the basic structure for a context that 
+//can be used to display toast notifications in a React application. 
 
 type ToastMessage = {
     message:string;
